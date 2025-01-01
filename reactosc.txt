@@ -1,0 +1,84 @@
+import React from "react";
+import {
+  Box,
+  Grid,
+  Card,
+  CardContent,
+  Typography,
+  AppBar,
+  Toolbar,
+  IconButton,
+  Button,
+} from "@mui/material";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import StorageIcon from "@mui/icons-material/Storage";
+import ImageIcon from "@mui/icons-material/Image";
+import CatalogIcon from "@mui/icons-material/ViewModule";
+import DescriptionIcon from "@mui/icons-material/Description";
+import DatabaseIcon from "@mui/icons-material/Database";
+import MenuIcon from "@mui/icons-material/Menu";
+
+const options = [
+  { title: "From Git", description: "Import code from your git repository to be built and deployed.", icon: <GitHubIcon /> },
+  { title: "Container Image", description: "Deploy an existing image from an image registry or image stream tag.", icon: <ImageIcon /> },
+  { title: "From Catalog", description: "Browse the catalog to discover, deploy, and connect to services.", icon: <CatalogIcon /> },
+  { title: "From Dockerfile", description: "Import your Dockerfile from your git repo to be built & deployed.", icon: <DescriptionIcon /> },
+  { title: "YAML", description: "Create resources from their YAML or JSON definitions.", icon: <DescriptionIcon /> },
+  { title: "Database", description: "Browse the catalog to discover database services to add to your application.", icon: <DatabaseIcon /> },
+];
+
+function OpenShiftClone() {
+  return (
+    <Box>
+      {/* Top Navbar */}
+      <AppBar position="static" color="primary">
+        <Toolbar>
+          <IconButton edge="start" color="inherit" aria-label="menu">
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+            Red Hat OpenShift Container Platform
+          </Typography>
+          <Button color="inherit">kubeadmin</Button>
+        </Toolbar>
+      </AppBar>
+
+      {/* Content */}
+      <Box sx={{ padding: 2 }}>
+        <Typography variant="h5" gutterBottom>
+          Add
+        </Typography>
+        <Typography variant="body2" color="textSecondary" paragraph>
+          Select a way to create an application, component, or service from one of the options.
+        </Typography>
+
+        {/* Cards Grid */}
+        <Grid container spacing={3}>
+          {options.map((option, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Card variant="outlined">
+                <CardContent>
+                  <Box sx={{ display: "flex", alignItems: "center", marginBottom: 2 }}>
+                    <Box sx={{ marginRight: 2 }}>{option.icon}</Box>
+                    <Typography variant="h6">{option.title}</Typography>
+                  </Box>
+                  <Typography variant="body2" color="textSecondary">
+                    {option.description}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+    </Box>
+  );
+}
+
+export default OpenShiftClone;
+
+
+
+
+=========================================================
+
